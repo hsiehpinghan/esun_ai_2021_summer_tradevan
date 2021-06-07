@@ -22,13 +22,6 @@ def inference():
     except:
         msg = sys.exc_info()[0]
         logging.exception(msg)
-        if data['retry'] >= 2:
-            return {'esun_uuid': data['esun_uuid'],
-                    'server_uuid': image_service.generate_server_uuid(),
-                    'server_timestamp': image_service.generate_server_timestamp(),
-                    'answer': 'isnull'}
-        else:
-            raise Exception(msg)
     output = jsonify(resp)
     logging.info(output.get_data(as_text=True))
     return output

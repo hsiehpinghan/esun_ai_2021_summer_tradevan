@@ -26,7 +26,7 @@ class TestApi():
                                                             word=word,
                                                             image=image))
             tasks.append(task)
-            if (index + 1) % 10 == 0:
+            if (index + 1) % 5 == 0:
                 loop.run_until_complete(asyncio.wait(tasks))
                 time.sleep(1)
 

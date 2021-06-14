@@ -1,5 +1,5 @@
-import os
 import sys
+import json
 
 from absl import logging
 from esun.application.image_service import ImageService
@@ -13,15 +13,12 @@ image_service = ImageService()
 def inference():
     logging.set_verbosity(logging.INFO)
     data = request.get_json(force=True)
-    logging.info(data)
-    image_64_encoded = data['image']
-    resp = None
+    logging.info(json.dumps(data))
     try:
         resp = image_service.get_response(esun_uuid=data['esun_uuid'],
-                                          image_64_encoded=image_64_encoded)
+                                          image_64_encoded=data['image'])
     except:
-        msg = sys.exc_info()[0]
-        logging.exception(msg)
+        logging.exception(sys.exc_info()[0])
     output = jsonify(resp)
     logging.info(output.get_data(as_text=True))
     return output

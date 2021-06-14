@@ -1,8 +1,9 @@
 import os
 import hashlib
 
+from cache import cache
 from datetime import datetime
-from esun.domain.image_classifier import ImageClassifier
+from esun.domain.image_entity import ImageEntity
 
 
 class ImageService():
@@ -10,14 +11,18 @@ class ImageService():
     SALT = os.environ['SALT']
 
     def get_response(self, esun_uuid: str, image_64_encoded: str):
-        classifier = ImageClassifier(id=esun_uuid,
-                                     image_64_encoded=image_64_encoded)
+        word = cache.get(esun_uuid)
+        if word is None:
+            image_entity = ImageEntity(id=esun_uuid,
+                                       image_64_encoded=image_64_encoded)
+            word = image_entity.get_word()
+            cache.set(esun_uuid, word)
         return {'esun_uuid': esun_uuid,
-                'server_uuid': self.generate_server_uuid(),
-                'server_timestamp': self.generate_server_timestamp(),
-                'answer': classifier.get_answer()}
+                'server_uuid': self._generate_server_uuid(),
+                'server_timestamp': self._generate_server_timestamp(),
+                'answer': word}
 
-    def generate_server_uuid(self):
+    def _generate_server_uuid(self):
         s = hashlib.sha256()
         data = (ImageService.CAPTAIN_EMAIL + str(int(datetime.now().utcnow().timestamp())
                                                  ) + ImageService.SALT).encode("utf-8")
@@ -25,5 +30,5 @@ class ImageService():
         server_uuid = s.hexdigest()
         return server_uuid
 
-    def generate_server_timestamp(self):
+    def _generate_server_timestamp(self):
         return int(datetime.now().utcnow().timestamp())

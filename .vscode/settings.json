@@ -1,0 +1,30 @@
+{
+    "editor.formatOnSave": true,
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "src",
+        "CAPTAIN_EMAIL": "allenwu9453@gmail.com",
+        "SALT": "my_salt",
+        "MODEL_DIR": "/home/hsiehpinghan/git/esun_ai_2021_summer_tradevan/model"
+    },
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "src",
+        "CAPTAIN_EMAIL": "allenwu9453@gmail.com",
+        "SALT": "my_salt",
+        "MODEL_DIR": "/home/hsiehpinghan/git/esun_ai_2021_summer_tradevan/model"
+    },
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "src",
+        "CAPTAIN_EMAIL": "allenwu9453@gmail.com",
+        "SALT": "my_salt",
+        "MODEL_DIR": "/home/hsiehpinghan/git/esun_ai_2021_summer_tradevan/model"
+    },
+    "python.testing.pytestArgs": [
+        "-s",
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.pythonPath": "/home/hsiehpinghan/miniconda3/envs/python3.7/bin/python"
+}

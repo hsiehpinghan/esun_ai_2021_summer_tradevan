@@ -7,9 +7,9 @@ from esun.domain.image_entity import ImageEntity
 class TestImageEntity():
 
     def test_get_word(self) -> None:
-        # self._test_get_word_esun_800_words()
-        # self._test_get_word_hadwritting_common_words_v2()
-        self._test_get_word_error_words()
+        self._test_get_word_esun_800_words()
+        self._test_get_word_hadwritting_common_words_v2()
+        # self._test_get_word_error_words()
 
     def _test_get_word_error_words(self) -> None:
         df = pd.read_csv(

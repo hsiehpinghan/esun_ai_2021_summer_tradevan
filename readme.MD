@@ -29,7 +29,7 @@
 1. 可在 Server 啟動時下指令決定啟動 Flask 推論服務器的數量，以提升 request 處理效率。
 2. 壓測1萬個 request ，且每秒同時發送5個 requests的情況下，response 都能維持在0.85秒左右回應。
 3. 在本機開發與正式環境佈署都使用同一套指令與流程進行測試及佈署。
-4. 即使 ensemble 5 個 EfficientNetB0 模型，只使用 CPU 及單機伺服器，也可以符合玉山主辨單位的要求。
+4. 即使是使用 ensemble 5 個 EfficientNetB0 的大模型，只使用 CPU 及單機伺服器，也可以符合玉山主辨單位的要求。
 
 # API服務優化後正式參賽結果
 

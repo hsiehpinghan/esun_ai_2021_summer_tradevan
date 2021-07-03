@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+    redis:
+        image: redis:6.2.4
+        restart: always
+        environment:
+            TZ: Asia/Taipei
+    esun_ai_2021_summer_tradevan:
+        image: hsiehpinghan/esun_ai_2021_summer_tradevan:6.0.0
+        restart: always
+        volumes:
+            - /tmp:/log:z
+        environment:
+            TZ: Asia/Taipei
+        links:
+            - redis
+    load_balance:
+        image: hsiehpinghan/load_balance:1.0.0
+        restart: always
+        ports:
+            - "80:80"
+        environment:
+            TZ: Asia/Taipei
+        links:
+            - "esun_ai_2021_summer_tradevan"
+

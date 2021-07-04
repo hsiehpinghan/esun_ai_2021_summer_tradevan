@@ -9,7 +9,7 @@ class TestImageEntity():
     def test_get_word(self) -> None:
         self._test_get_word_esun_800_words()
         self._test_get_word_hadwritting_common_words_v2()
-        # self._test_get_word_error_words()
+        self._test_get_word_error_words()
 
     def _test_get_word_error_words(self) -> None:
         df = pd.read_csv(
@@ -58,8 +58,3 @@ class TestImageEntity():
                                        image_64_encoded=image_64_encoded)
             pred_word = image_entity.get_word()
             assert word == pred_word, image_64_encoded
-            """
-            if word != pred_word:
-                print(f'word: {word} / pred_word: {pred_word}')
-                print(image_64_encoded)
-            """

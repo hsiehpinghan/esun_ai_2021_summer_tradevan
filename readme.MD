@@ -126,7 +126,7 @@
 
        sudo docker-compose down
 ## 正式環境
-1. 執行以下指令: (同時啟動5台 Flask 推論服務器提升 request 處理效率)
+1. 執行以下指令: (依機器規格調整 Flask 推論服務器的數量，以下是在我們正式環境的[硬體規格](#硬體資源)下同時啟動5台 Flask 推論服務器，以提升 request 處理效率)
 
        cd esun_ai_2021_summer_tradevan
        sudo docker-compose up -d --scale esun_ai_2021_summer_tradevan=5
